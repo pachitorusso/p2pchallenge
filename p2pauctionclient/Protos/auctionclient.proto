@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "p2pgrpcauctionclient";
+
+package auction;
+
+// The greeting service definition.
+service Auction {
+  // Sends a greeting
+  rpc InitiateAuction (AuctionRequest) returns (AuctionResponse);
+  rpc Bid (BidRequest) returns (BidRequest);
+  rpc CloseAuction (CloseAuctionRequest) returns (CloseAuctionResponse);
+}
+
+message AuctionRequest {
+  string userid = 1;
+  string goodid = 2;
+  int32 amount = 3;
+}
+
+message AuctionResponse {
+  string userid = 1;
+  string goodid = 2;
+  int32 amount = 3;
+}
+
+message BidRequest {
+  string userid = 1;
+  string goodid = 2;
+  int32 amount = 3;
+}
+
+message CloseAuctionRequest {
+  string goodid = 1;
+}
+
+message CloseAuctionResponse {
+  string userIdWinner = 1;
+  int32 amount = 2;
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
